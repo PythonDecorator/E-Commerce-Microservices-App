@@ -3,9 +3,9 @@ name: Test and Lint
 
 on:
   push:
-    branches: [ "dev_users" ]
+    branches: [ "users-dev" ]
   pull_request:
-    branches: [ "master", "users"]
+    branches: [ "master", "users-master"]
 
   # Allows running this workflow manually from the Actions tab
   workflow_dispatch:
