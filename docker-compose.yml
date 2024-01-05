@@ -1,13 +1,14 @@
 version: "3.9"
 
 services:
-  app:
+  users_backend:
     build:
       context: .
       args:
         - DEV=true
+    container_name: users-ms
     ports:
-      - "8000:8000"
+      - "8001:8000"
     volumes:
       - ./app:/app
     command: >
@@ -15,52 +16,32 @@ services:
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
     environment:
-      - DB_HOST=db
-      - DB_NAME=devdb
-      - DB_USER=devuser
-      - DB_PASS=changeme
-    depends_on:
-      - db
-
-  db:
-    image: postgres:13-alpine
-    volumes:
-      - dev-db-data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=devdb
-      - POSTGRES_USER=devuser
-      - POSTGRES_PASSWORD=changeme
-      - DEBUG=1
-
-volumes:
-  dev-db-data:
-
-
----
-version: '3.9'
-services:
-  users_backend:
-    build: .
-    container_name: users-ms
-    volumes:
-      - .:/app
+      DB_HOST: users_db
+      DB_NAME: devdb
+      DB_USER: devuser
+      DB_PASS: changeme
+      SECRET_KEY: dev_secret
+      DEBUG: 1
     depends_on:
       - users_db
     networks:
       - users
 
   users_db:
-    image: mysql:5.7.22
-    restart: always
-    environment:
-      MYSQL_DATABASE: users
-      MYSQL_ROOT_PASSWORD: root
+    image: postgres:13-alpine
     volumes:
-      - .dbdata:/var/lib/mysql
+      - dev-db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: devdb
+      POSTGRES_USER: devuser
+      POSTGRES_PASSWORD: changeme
     networks:
-        - users
+      - users
+
 
 networks:
   users:
     name: users
 
+volumes:
+  dev-db-data:

@@ -1,24 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d303b7e0-f9f4-45e2-93bc-6c6d46a36bb3" name="Changes" comment="" />
+    <list default="true" id="d303b7e0-f9f4-45e2-93bc-6c6d46a36bb3" name="Changes" comment="initial commit">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/checks.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.flake8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/asgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/tests/test_health_check.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/authentication.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/management/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/management/commands/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/management/commands/wait_for_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/tests/test_admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/tests/test_commands.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/tests/test_models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/tests/test_user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2aJir6luji6EJG61M5kEuR8yIWh" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/XPS/Desktop/Pro Portfolio/E-Commerce-Microservices-App/users&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\XPS\Desktop\Pro Portfolio\E-Commerce-Microservices-App\users" />
+      <recent name="C:\Users\XPS\Desktop\Pro Portfolio\E-Commerce-Microservices-App\users\app\core" />
+      <recent name="C:\Users\XPS\Desktop\Pro Portfolio\E-Commerce-Microservices-App\users\app\core\tests" />
+      <recent name="C:\Users\XPS\Desktop\Pro Portfolio\E-Commerce-Microservices-App\users\app\app" />
+      <recent name="C:\Users\XPS\Desktop\Pro Portfolio\E-Commerce-Microservices-App\users\app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\XPS\Desktop\Pro Portfolio\E-Commerce-Microservices-App\users\app\core" />
+      <recent name="C:\Users\XPS\Desktop\Pro Portfolio\E-Commerce-Microservices-App\users\app" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="users" />
@@ -51,6 +121,19 @@
       <option name="presentableId" value="Default" />
       <updated>1704043279112</updated>
     </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <created>1704043616009</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1704043616009</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
 </project>

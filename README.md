@@ -1,4 +1,4 @@
-# E-Commerce-Microservices-App Latest
+# E-Commerce-Microservices-App
 
 ## This is the users' microservice.
 
@@ -56,10 +56,10 @@ $ docker-compose.yaml up
 > other commands...
 
 ```
-docker-compose run --rm app sh -c "django-admin startproject app ."
-docker-compose run --rm app sh -c "python manage.py test"
-docker-compose run --rm app sh -c "python manage.py makemigrations"
-docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"
+docker-compose run --rm users_backend sh -c "django-admin startproject app ."
+docker-compose run --rm users_backend sh -c "python manage.py test"
+docker-compose run --rm users_backend sh -c "python manage.py makemigrations"
+docker-compose run --rm users_backend sh -c "python manage.py wait_for_db && python manage.py migrate"
 docker volume ls # to see all the volume active
 docker volume rm volume name # to remove a volume
 docker-compose up # start server
@@ -69,8 +69,8 @@ docker-compose -f docker-compose-deploy.yml down # stop server
 docker-compose -f docker-compose-deploy.yml up # start deploy server on server machine
 docker exec -it --user root  container_id sh    # run terminal as root user
 python manage.py test --exclude-tag=selenium    # exclude selenium test. if needed.
-docker-compose run --rm app sh -c "python manage.py test post.tests.test_post
-.PrivatePostIndexTests.test_liking_a_post_successful"   # run one test only.
+docker-compose run --rm users_backend sh -c "python manage.py test core.tests.test_user
+.PublicUserApiTests.test_ambassador_login_user"   # run one test only.
 
 ```
 

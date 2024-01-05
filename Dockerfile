@@ -7,7 +7,6 @@ COPY ./requirements.txt /tmp/requirements.txt
 COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 COPY ./app /app
 WORKDIR /app
-EXPOSE 8000
 
 ARG DEV=false
 RUN python -m venv /py && \
@@ -24,22 +23,8 @@ RUN python -m venv /py && \
     adduser \
         --disabled-password \
         --no-create-home \
-        django-user && \
-    mkdir -p /vol/web/media && \
-    mkdir -p /vol/web/static && \
-    chown -R django-user:django-user /vol && \
-    chmod -R 755 /vol
+        django-user
 
 ENV PATH="/py/bin:$PATH"
 
 USER django-user
-
-
-FROM python:3.9
-ENV PYTHONUNBUFFERED 1
-WORKDIR /app
-COPY requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt
-COPY . /app
-
-CMD python manage.py wait_for_db && python manage.py runserver 0.0.0.0:8000
