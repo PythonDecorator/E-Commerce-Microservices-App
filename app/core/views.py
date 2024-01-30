@@ -3,8 +3,9 @@ Core users views.
 """
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
-from django.urls import reverse
+from django.http import JsonResponse
 from django.utils import timezone
+
 from rest_framework import generics, exceptions, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -30,8 +31,7 @@ class LoginView(APIView):
 
         if user is None:
             raise exceptions.AuthenticationFailed(f'User not found! That email has not '
-                                                  f'been registered. Please click '
-                                                  f'{reverse("user:register")} to sign-up')
+                                                  f'been registered.')
 
         if not user.check_password(password):
             raise exceptions.AuthenticationFailed('Incorrect Password!')
@@ -44,10 +44,6 @@ class LoginView(APIView):
         try:
             token = user.auth.token
 
-            if token:
-                msg = 'Authentication: You are already logged-in.'
-                raise exceptions.AuthenticationFailed(msg)
-
         except ObjectDoesNotExist:
 
             UserToken.objects.create(
@@ -56,13 +52,12 @@ class LoginView(APIView):
                 expired_at=timezone.now() + timezone.timedelta(days=1)
             )
 
-        user.refresh_from_db()
-
         response = Response()
         response.set_cookie(key='jwt', value=token, httponly=True)
         response.data = {
             'success': True,
             "message": "Your login was successful",
+            "data": UserUpdateSerializer(user).data,
             "jwt": token,
         }
 
@@ -79,6 +74,14 @@ class ManageUserView(generics.RetrieveUpdateDestroyAPIView):
         """Retrieve and return the authenticated user."""
 
         return self.request.user
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return JsonResponse(serializer.data)
 
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -108,8 +111,8 @@ class ManageUserView(generics.RetrieveUpdateDestroyAPIView):
 class UsersAPIView(generics.ListAPIView):
     serializer_class = UserSerializer
     queryset = get_user_model().objects.all()
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [permissions.IsAuthenticated]
 
 
 class LogoutAPIView(APIView):

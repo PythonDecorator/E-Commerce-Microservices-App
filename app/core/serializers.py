@@ -11,19 +11,13 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ['first_name', 'last_name', 'email', 'password']
+        fields = ["id", 'first_name', 'last_name', 'email', 'password']
         extra_kwargs = {"password": {"write_only": True,
                                      "min_length": 8}
                         }
 
     def create(self, validated_data):
         """Create and return a user with encrypted password."""
-        request = self.context.get('request')
-
-        data = request.data
-
-        if data['password'] != data['password1']:
-            raise serializers.ValidationError('Passwords do not match!')
 
         return get_user_model().objects.create_user(**validated_data)
 

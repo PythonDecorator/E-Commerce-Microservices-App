@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  users-backend:
+    build: .
+    image: ${IMAGE_NAME}
+    ports:
+      - "8001:8000"
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    environment:
+      DB_NAME: ${DATABASE_NAME}
+      DB_HOST: ${DATABASE_HOST}
+      DB_USER: ${DATABASE_USER}
+      DB_PASS: ${DATABASE_PASS}
+      DB_PORT: ${DATABASE_PORT}
+      SECRET_KEY: ${SECRET_KEY}

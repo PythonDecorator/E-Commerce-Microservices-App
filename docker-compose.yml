@@ -3,12 +3,10 @@ version: "3.9"
 services:
   users_backend:
     build:
-      context: .
+      context: ./docker.dev
       args:
         - DEV=true
     container_name: users-ms
-    ports:
-      - "8001:8000"
     volumes:
       - ./app:/app
     command: >
@@ -16,11 +14,11 @@ services:
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
     environment:
-      DB_HOST: users_db
-      DB_NAME: devdb
-      DB_USER: devuser
-      DB_PASS: changeme
-      SECRET_KEY: dev_secret
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      SECRET_KEY: ${SECRET_KEY}
       DEBUG: 1
     depends_on:
       - users_db
@@ -32,9 +30,9 @@ services:
     volumes:
       - dev-db-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: devdb
-      POSTGRES_USER: devuser
-      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     networks:
       - users
 

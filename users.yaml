@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: users-backend
+  name: users-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: users-backend
+  template:
+    metadata:
+      labels:
+        io.kompose.service: users-backend
+    spec:
+      containers:
+        - args:
+            - sh
+            - -c
+            - |-
+              python manage.py wait_for_db &&
+                     python manage.py migrate &&
+                     python manage.py runserver 0.0.0.0:8000
+          env:
+            - name: DB_HOST
+              value:  ${DATABASE_HOST}
+            - name: DB_NAME
+              value:  ${DATABASE_NAME}
+            - name: DB_PASS
+              value:  ${DATABASE_PASS}
+            - name: DB_PORT
+              value:  ${DATABASE_PORT}
+            - name: DB_USER
+              value:  ${DATABASE_USER}
+            - name: SECRET_KEY
+              value:  ${SECRET_KEY}
+          image:  ${IMAGE_NAME}
+          name: users-backend
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: users-backend
+  name: users-backend
+spec:
+  ports:
+    - name: "users"
+      port: 8001
+      targetPort: 8000
+  selector:
+    io.kompose.service: users-backend

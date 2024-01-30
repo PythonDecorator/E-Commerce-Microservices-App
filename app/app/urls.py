@@ -17,10 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from . import views  # noqa
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/health-check/', views.health_check, name='health-check'),
+    path('api/user/', views.health_check, name='health-check'),
     path('api/user/', include('core.urls')),
+    path('admin/', admin.site.urls),
 ]

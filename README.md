@@ -1,5 +1,20 @@
 # E-Commerce-Microservices-App
 
+---
+
+This branch contains only the users' microservice.
+Check the GitHub branch to see the other microservices or click below.
+
+
+- [Ambassador-Microservice](https://github.com/PythonDecorator/E-Commerce-Microservices-App)
+- [Email-Microservice](https://github.com/PythonDecorator/E-Commerce-Microservices-App)
+- [Checkout-Microservice](https://github.com/PythonDecorator/E-Commerce-Microservices-App)
+- [Frontend-Microservice](https://github.com/PythonDecorator/E-Commerce-Microservices-App)
+- [Users-Microservice](https://github.com/PythonDecorator/E-Commerce-Microservices-App)
+
+
+---
+
 ## This is the users' microservice.
 
 ![version](https://img.shields.io/badge/version-0.0.1-blue.svg)
@@ -44,13 +59,13 @@ $ cd E-Commerce-Microservices-App
 > Run command to build Docker image
 
 ```bash
-$ docker build .
+$ docker.dev build .
 ```
 
 > start server
 
 ```bash
-$ docker-compose.yaml up
+$ docker.dev-compose.yaml up
 ```
 
 > other commands...

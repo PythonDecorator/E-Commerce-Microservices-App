@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ambassador-ingress
+spec:
+  ingressClassName: "gce"
+  rules:
+  - http:
+      paths:
+      - path: /api/user/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name:  users-backend
+            port:
+              number: 8001

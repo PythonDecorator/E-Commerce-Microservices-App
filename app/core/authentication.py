@@ -1,10 +1,11 @@
 import jwt
-import datetime
+
+from django.utils import timezone
 from rest_framework import exceptions
 from rest_framework.authentication import BaseAuthentication
 
 from app import settings  # noqa
-from core.models import User  # noqa
+from django.contrib.auth import get_user_model
 
 
 class JWTAuthentication(BaseAuthentication):
@@ -20,12 +21,13 @@ class JWTAuthentication(BaseAuthentication):
         try:
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
         except jwt.ExpiredSignatureError:
+
             raise exceptions.AuthenticationFailed('unauthenticated')
 
         if (is_ambassador and payload['scope'] != 'ambassador') or (not is_ambassador and payload['scope'] != 'admin'):
             raise exceptions.AuthenticationFailed('Invalid Scope!')
 
-        user = User.objects.get(pk=payload['user_id'])
+        user = get_user_model().objects.get(pk=payload['user_id'])
 
         if user is None:
             raise exceptions.AuthenticationFailed('User not found!')
@@ -33,12 +35,12 @@ class JWTAuthentication(BaseAuthentication):
         return user, None
 
     @staticmethod
-    def generate_jwt(id, scope):
+    def generate_jwt(user_id, scope):
         payload = {
-            'user_id': id,
+            'user_id': user_id,
             'scope': scope,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1),
-            'iat': datetime.datetime.utcnow(),
+            'exp': timezone.now() + timezone.timedelta(days=1),
+            'iat': timezone.now(),
         }
 
         return jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
